@@ -1,6 +1,6 @@
 var searchInput = document.getElementById('city-name');
 var submitBtn = document.querySelector('.btn');
-var temp1 = getElementById('temp1');
+var temp1 = document.getElementById('temp1');
 
 
 
