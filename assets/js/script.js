@@ -59,12 +59,12 @@ function getUvAndFive() {
         .then(function(response) {
             return response.json();
         })
-        .then(function(data) {
+        .then(function(data) { //UV info
             console.log(data);
             var uvIndex = data.current.uvi;
             if(uvIndex <= 2.0) {
                 $('#uv1').text(uvIndex);
-                 $('#uv1').addClass('bg-success');    
+                $('#uv1').addClass('bg-success');    
             } else if (uvIndex > 2 && uvIndex < 6) {
                 $('#uv1').text(uvIndex);
                 $('#uv1').addClass('bg-warning');
@@ -73,7 +73,7 @@ function getUvAndFive() {
                 $('#uv1').addClass('bg-danger');
             }
 
-            var cardHtml = '';
+            var cardHtml = ''; //create the cards for the next 5 days
             for(var i = 1; i < 6; i++) {
                 var icon = data.daily[i].weather[0].icon;
                 var date = moment.unix(data.daily[i].dt).format("MM-DD-YYYY");
@@ -87,29 +87,15 @@ function getUvAndFive() {
                         <p class="card-text">Wind: ${data.daily[i].wind_speed} mph</p>
                     </div>
                 </div>`;
-
                 cardDeck.innerHTML = cardHtml;
-
             }
         });
     };
 
-
- 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+//add city to search history list
+var searchList = document.querySelector('.list-group');
+var city = document.getElementById('city-search').value;
+var cities = [];
 
 
 
