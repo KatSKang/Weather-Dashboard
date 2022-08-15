@@ -1,7 +1,8 @@
 
 
 .jumbotron {
-    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    background-image: linear-gradient(120deg, #466392 20%, #c2e9fb 80%);
+    color: white;
 }
 
 .sidebar {
@@ -21,6 +22,17 @@ button {
     margin: 5px;
 }
 
+.card {
+    background: #466392;
+    color: white;
+    font-size: 20px;
+}
+
+
+#cityname, #date {
+    font-weight: bold;
+    font-size: 40px;
+}
 
 footer {
     text-align: center;

@@ -22,14 +22,10 @@
             <div class="container col-sm-3 col-md-2 sidebar">
                 <div class="form-group search">
                     <h2>Search for a city:</h2> <br>
-                    <input type="text" class="form-control" id="city-name" placeholder="ex: Atlanta"><br>
+                    <input type="text" class="form-control" id="city-search" placeholder="ex: Atlanta"><br>
                     <button type="submit" class="btn btn-primary">Search</button>
                 </div>
-                <div class="list-group">
-                    <button type="button" class="list-group-item list-group-item-action">Recent city</button>
-                    <button type="button" class="list-group-item list-group-item-action">Recent city</button>
-                    <button type="button" class="list-group-item list-group-item-action">Recent city</button>
-                    <button type="button" class="list-group-item list-group-item-action">Recent city</button>
+                <div class="list-group"> <!-- append recent searched cities using JS-->
                     <button type="button" class="list-group-item list-group-item-action">Recent city</button>
                 </div>
             </div>
@@ -40,102 +36,35 @@
                 <div class="card mb-3">
                     <div class="row no-gutters">
                       <div class="col-md-4">
-                        <img src="http://openweathermap.org/img/wn/10d@4x.png" class="card-img" alt="Weather description">
+                        <img src="http://openweathermap.org/img/wn/10d@4x.png" id="icon" class="card-img" alt="Weather description">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h2 class="card-title">City (Date) </h2>
-                                <p class="card-text">Temp: <span id="temp1"></span></p>
-                                <p class="card-text">Humidty: <span id="hum1"></span></p>
+                                <h2 class="card-title"><span id="cityname"></span> <span id="date"</span> </h2>
+                                <p class="card-text">Temp: <span id="temp1"></span>°F</p>
+                                <p class="card-text">Humidty: <span id="hum1"></span>%</p>
                                 <p class="card-text">UV Index: <span id="uv1"></span></p>
-                                <p class="card-text">Wind: <span id="wind1"></span></p>
+                                <p class="card-text">Wind: <span id="wind1"></span> mph</p>
                         </div>
                       </div>
                     </div>
                 </div>
                 <!-- card deck for 5 day forecast -->
                 <div class="card-deck">
-                    <div class="card">
-                        <img src="http://openweathermap.org/img/wn/10d@4x.png" class="card-img-top" alt="Weather description">
-                        <div class="card-body">
-                            <h5 class="card-title">Date</h5>
-                            <p class="card-text">Temp</p>
-                            <p class="card-text">Humidty</p>
-                            <p class="card-text">Wind</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="http://openweathermap.org/img/wn/10d@4x.png" class="card-img-top" alt="Weather description">
-                        <div class="card-body">
-                            <h5 class="card-title">Date</h5>
-                            <p class="card-text">Temp</p>
-                            <p class="card-text">Humidty</p>
-                            <p class="card-text">Wind</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="http://openweathermap.org/img/wn/10d@4x.png" class="card-img-top" alt="Weather description">
-                        <div class="card-body">
-                            <h5 class="card-title">Date</h5>
-                            <p class="card-text">Temp</p>
-                            <p class="card-text">Humidty</p>
-                            <p class="card-text">Wind</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="http://openweathermap.org/img/wn/10d@4x.png" class="card-img-top" alt="Weather description">
-                        <div class="card-body">
-                            <h5 class="card-title">Date</h5>
-                            <p class="card-text">Temp</p>
-                            <p class="card-text">Humidty</p>
-                            <p class="card-text">Wind</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="http://openweathermap.org/img/wn/10d@4x.png" class="card-img-top" alt="Weather description">
-                        <div class="card-body">
-                            <h5 class="card-title">Date</h5>
-                            <p class="card-text">Temp</p>
-                            <p class="card-text">Humidty</p>
-                            <p class="card-text">Wind</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
+                  
                 </div>
              
             </main>
 
-
-
-
         </div>  
 
 
-    
-
-
-
-
-
-
     <footer>
-        <p>Made with HTML and CSS. Powered by OpenWeather Map API.</p>
+        <p>Made with HTML, Bootstrap and CSS. Powered by OpenWeather Map API.</p>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
