@@ -120,6 +120,8 @@ function updateHTML() {
             var newButton = document.createElement('button');
             newButton.classList.add('list-group-item', 'list-group-item-action');
             newButton.textContent = name[i];
+            newButton.setAttribute('cityName', name[i]);
+            newButton.onclick = (e) => {getDailyWeather(e.target.getAttribute('cityName'))};
             searchList.append(newButton);
         } 
     }
