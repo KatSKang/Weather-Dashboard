@@ -1,13 +1,11 @@
-var searchInput = document.getElementById('city-search');
+
 var submitBtn = document.querySelector('.btn');
 var cardDeck = document.querySelector('.card-deck');
-
-var listBtn = ''; // need to insert into HTML using JS
 var apiKey = '&appid=060124fc13f557f4671002d9efa9f884';
 
 //gets weather for current day
-function getDailyWeather () {
-    var geoUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + searchInput.value + apiKey;
+function getDailyWeather (city) {
+    var geoUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + apiKey;
 
     fetch(geoUrl) //get lat and long for city entered in search
         .then(function (response) {
@@ -36,11 +34,12 @@ function getDailyWeather () {
             $('#hum1').text(weatherData.main.humidity);
             $('#wind1').text(weatherData.wind.speed);
         })
+    getUvAndFive(city);
 };
 
 //gets UV index for current day & next 5 days info
-function getUvAndFive() {
-    var geoUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + searchInput.value + apiKey;
+function getUvAndFive(city) {
+    var geoUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + apiKey;
 
     fetch(geoUrl) //get lat and long for city entered in search
         .then(function (response) {
@@ -92,13 +91,52 @@ function getUvAndFive() {
         });
     };
 
-//add city to search history list
+
 var searchList = document.querySelector('.list-group');
-var city = document.getElementById('city-search').value;
-var cities = [];
+var recent = [];
 
+//add city to search history list
+function searchHistory(searches) {
+    recent.push(searches); 
+    localStorage.setItem('searchHistory', JSON.stringify(recent)); 
+    console.log(recent);
 
+    //adds buttons for the recent searches
+    var newButton = document.createElement('button');
+        newButton.classList.add('list-group-item','list-group-item-action');
+        newButton.setAttribute('cityName', searches);
+        newButton.textContent = searches;
+        newButton.onclick = (e) => {getDailyWeather(e.target.getAttribute('cityName'))}; //click event to get weather info
+        searchList.append(newButton);
+}
 
-// EVENT LISTENSERS 
-submitBtn.addEventListener('click',getDailyWeather);
-submitBtn.addEventListener('click',getUvAndFive);
+//loads recent history from localstorage if any
+function updateHTML() {
+    var name = JSON.parse(localStorage.getItem('searchHistory'));
+    if(name == null) {
+        return
+    } else {
+        for(var i = 0; i < name.length; i++) {
+            var newButton = document.createElement('button');
+            newButton.classList.add('list-group-item', 'list-group-item-action');
+            newButton.textContent = name[i];
+            searchList.append(newButton);
+        } 
+    }
+}
+updateHTML();
+
+function checkCity(event) {
+    event.preventDefault();
+    var searches = document.getElementById('city-search').value;
+    if(searches == ''){
+        return;
+    } else {
+        console.log(searches);
+        getDailyWeather(searches);
+        searchHistory(searches);
+    }
+}
+
+// EVENT LISTENERS 
+submitBtn.addEventListener('click',checkCity);
