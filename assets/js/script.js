@@ -61,15 +61,15 @@ function getUvAndFive(city) {
         .then(function(data) { //UV info
             console.log(data);
             var uvIndex = data.current.uvi;
-            if(uvIndex <= 2.0) {
+            if(uvIndex <= 2) {
                 $('#uv1').text(uvIndex);
-                $('#uv1').addClass('bg-success');    
+                $('#uv1').addClass('favorable');    
             } else if (uvIndex > 2 && uvIndex < 6) {
                 $('#uv1').text(uvIndex);
-                $('#uv1').addClass('bg-warning');
+                $('#uv1').addClass('moderate');
             } else if (uvIndex >= 6) {
                 $('#uv1').text(uvIndex);
-                $('#uv1').addClass('bg-danger');
+                $('#uv1').addClass('severe');
             }
 
             var cardHtml = ''; //create the cards for the next 5 days
