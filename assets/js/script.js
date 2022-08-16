@@ -5,7 +5,7 @@ var apiKey = '&appid=060124fc13f557f4671002d9efa9f884';
 
 //gets weather for current day
 function getDailyWeather (city) {
-    var geoUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + apiKey;
+    var geoUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + apiKey;
 
     fetch(geoUrl) //get lat and long for city entered in search
         .then(function (response) {
@@ -39,7 +39,7 @@ function getDailyWeather (city) {
 
 //gets UV index for current day & next 5 days info
 function getUvAndFive(city) {
-    var geoUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + apiKey;
+    var geoUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + apiKey;
 
     fetch(geoUrl) //get lat and long for city entered in search
         .then(function (response) {
@@ -79,7 +79,7 @@ function getUvAndFive(city) {
                 cardHtml += `
                 <div class="card" id="small-cards">
                 <h5 class="card-title">${date}</h5>
-                <img src="http://openweathermap.org/img/wn/${icon}@2x.png" class="card-img-top" alt="Weather description">
+                <img src="https://openweathermap.org/img/wn/${icon}@2x.png" class="card-img-top" alt="Weather description">
                     <div class="card-body">
                         <p class="card-text">Temp: ${data.daily[i].temp.day}°F</p>
                         <p class="card-text">Humidty: ${data.daily[i].humidity}%</p>
